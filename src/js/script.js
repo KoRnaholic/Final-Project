@@ -38,7 +38,7 @@ const createProductCard = (product) => {
                                 <div class="btn">
                                     <a href="">Buy Now</a>
                                 </div>
-                                <a href="">Add to Cart</a>
+                                <a href="" class="cart">Add to Cart</a>
                             </div>
                         </div>
                     </div>`;

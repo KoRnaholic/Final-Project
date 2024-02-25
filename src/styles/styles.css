@@ -91,23 +91,45 @@ li a{
     border-radius: 3px;
     text-decoration: none;
     color: #007bff;
+    transition: all 0.3s;
+  }
+  .view-btn a:hover{
+    background-color: #007bff;
+    color: white;
+    transition: all 0.5s;
   }
   
   .btn-group {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+
   }
   
   .btn-group .btn a {
     padding: 5px 15px;
-    background-color: #28a745;
+    background-color: #333A73;
     color: #fff;
     border-radius: 3px;
     margin-left: -2px;
+    margin: 2px 10px;
   }
   .btn-group a {
-    margin: 0 10px;
+    /* margin: 2px 10px; */
     text-decoration: none;
-    color: #000;
+    /* color: #000; */
+    padding: 5px 15px;   
+    border: 1.5px solid #007bff;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #007bff;
+    transition: all 0.3s;
+   
+  }
+
+  .cart:hover{
+    background-color: #333A73;
+    color: white;
   }
 
   .info{
