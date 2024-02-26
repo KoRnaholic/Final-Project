@@ -19,17 +19,22 @@ const createProductCard = (product) => {
 
     cardEl.innerHTML = `
         ${product.map((product) => {
-            const { title, thumbnail, description, price, id } = product;
+            const { title, thumbnail, description, price, id,rating, discountPercentage
+            } = product;
             return `<div class="card">
                         <img src="${thumbnail}" alt="" />
+                        <span class="flag-discount">${discountPercentage.toFixed()}% Off</span>
                         <div class="card-body">
                             <div class="info">
                                 <div class="card-title">
                                     <h4>${title}</h4>
-                                    <h3>$${price}</h3>
+                                    <h3 class="price">$${price}</h3>
                                 </div>
                                 <div class="view-btn">
                                     <a href="#" onClick="showDetails(${id})">View Details</a>
+                                    <div class="Stars" style="--rating: ${rating};"></div>
+                                    <span>${rating.toFixed(1)}</span>
+                                    </div>
                                 </div>
                             </div>
                             <hr />
