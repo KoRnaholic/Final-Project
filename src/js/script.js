@@ -1,7 +1,7 @@
-// Assuming cardContainer is already defined as the container where you want to append the product cards
+
 const cardContainer = document.querySelector(".main-container");
  const category_api = "https://dummyjson.com/products/category/"
-// Example API_URL
+ const buttonContainer = document.querySelector(".button-container")
 const API_URL = "https://dummyjson.com/products?skip=1&limit=9";
 let page = 0;
 const fetchProducts = async (page) => {
@@ -79,21 +79,20 @@ category.addEventListener("change", async(e)=> {
     const { products } = data;
     console.log(products);
     createProductCard(products);
+    buttonContainer.innerHTML = ''
 })
 
 
 searchButton = document.querySelector(".search-button");
 searchButton.addEventListener("click", async ()=> {
     let input = document.querySelector(".search-input")
-
-   
     cardContainer.innerHTML = ''
     
     const response = await fetch(`https://dummyjson.com/products/search?q=${input.value}`);
     const data = await response.json();
     const { products } = data;
     createProductCard(products);
-
     input.value= ""
+    buttonContainer.innerHTML = ''
 })
 
