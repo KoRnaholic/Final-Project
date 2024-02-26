@@ -18,7 +18,7 @@ fetchProducts();
 const createProductCard = (product) => {
     const cardEl = document.createElement("div");
     cardEl.classList.add("row");
-    const { title, thumbnail, description, category, price, id, images, rating, discountPercentage } = product;
+    const { title, thumbnail, description, category, price, id, images, rating, discountPercentage, stock, brand } = product;
     cardEl.innerHTML = `
     <div class = "card-wrapper">
     <div class = "card">
@@ -27,7 +27,7 @@ const createProductCard = (product) => {
         <div class = "img-showcase">
           ${images.map((image)=> {
             return ` <img src = "${image}" alt = "shoe image">`
-          })}
+          }).join("")}
         </div>
       </div>
       <div class = "img-select">
@@ -46,19 +46,11 @@ const createProductCard = (product) => {
     <!-- card right -->
     <div class = "product-content">
       <h2 class = "product-title">${title}</h2>
-      <a href = "#" class = "product-link">visit nike store</a>
+      <a href = "#" class = "product-link">Brand: ${brand}</a>
       <div class = "product-rating">
-      <div class="star-rating">
-
-      ${(() => {
-        let starsHTML = '';
-        for (let i = 1; i < rating; i++) {
-            starsHTML += `<input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>`;
-        }
-        return starsHTML;
-      })()}
-    </div>
-        <span>${rating}</span>
+      
+    <div class="Stars" style="--rating: ${rating};"></div>
+    <span>${rating.toFixed(1)}</span>
       </div>
 
       <div class = "product-price">
@@ -71,7 +63,7 @@ const createProductCard = (product) => {
         <p>${description}</p>
         <ul>
           <li>Color: <span>Black</span></li>
-          <li>Available: <span>in stock</span></li>
+          <li>Available: <span>in stock (${stock})</span></li>
           <li>Category: <span>${category}</span></li>
           <li>Shipping Area: <span>All over the world</span></li>
           <li>Shipping Fee: <span>Free</span></li>
@@ -83,10 +75,8 @@ const createProductCard = (product) => {
         <button type = "button" class = "btn">
           Add to Cart <i class = "fas fa-shopping-cart"></i>
         </button>
-        <button type = "button" class = "btn">Compare</button>
       </div>
 
-      
     </div>
     </div>
   </div>`;

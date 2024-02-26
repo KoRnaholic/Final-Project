@@ -2,16 +2,16 @@
 const cardContainer = document.querySelector(".main-container");
 
 // Example API_URL
-const API_URL = "https://dummyjson.com/products";
-
-const fetchProducts = async () => {
-    const response = await fetch(API_URL);
+const API_URL = "https://dummyjson.com/products?skip=1&limit=9";
+let page = 0;
+const fetchProducts = async (page) => {
+    const response = await fetch(`https://dummyjson.com/products?skip=${page}&limit=9`);
     const data = await response.json();
     const { products } = data;
     console.log(products);
     createProductCard(products);
 };
-fetchProducts();
+fetchProducts(page);
 
 const createProductCard = (product) => {
     const cardEl = document.createElement("div");
@@ -46,7 +46,8 @@ const createProductCard = (product) => {
                                 <a href="" class="cart">Add to Cart</a>
                             </div>
                         </div>
-                    </div>`;
+                        
+                        </div>`;
         }).join("")}
     `;
 
@@ -59,5 +60,14 @@ function showDetails(id) {
     // Example: You can redirect to a details page with the product ID in the query string
     window.location.href = `details.html?id=${id}`;
 }
+
+
+const button = document.querySelector(".next-button");
+button.addEventListener("click", (e)=> {
+ e.preventDefault();
+ page +=9;
+
+ fetchProducts(page)
+})
 
 

@@ -251,3 +251,20 @@ li a{
     -webkit-text-fill-color: transparent;
   }
 }
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+}
+
+.next-button{
+  padding: 10px 15px;
+  background-color: #007bff;
+  margin: 0;
+  border: none;
+  color: white;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
