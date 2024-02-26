@@ -41,16 +41,24 @@
     </header>
 
     <main>
-        <div class="main-container">
+        <div class="main-box">
             <div class="sort-box">
                 <h2>All Products</h2>
-                <select>
+                <div class="search-container">
+                    <input type="text" value="" class="search-input" placeholder="Search...">
+                    <button class="search-button">Search</button>
+                  </div>
+                <select id="category">
                     <option value="">Default Shorting</option>
-                    <option value="">Short by price</option>
-                    <option value="">Short by popularity</option>
-                    <option value="">Short by rating</option>
-                    <option value="">Short by sale</option>
+                    <option value="smartphones">Smartphones</option>
+                    <option value="laptops">Laptops</option>
+                    <option value="skincare">Skincare</option>
+                    <option value="groceries">Groceries</option>
                 </select>
+
+            </div>
+            <div class="main-container">
+
             </div>
         </div>
         <div class="button-container">
