@@ -313,3 +313,8 @@ li a{
   border-radius: 5px;
   gap: 5px;
 }
+
+.not-found{
+  margin-top: 50px;
+  font-size: 26px;
+}

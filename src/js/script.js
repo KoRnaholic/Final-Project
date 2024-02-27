@@ -55,7 +55,6 @@ const createProductCard = (product) => {
 };
 
 function showDetails(id) {
-    // Example: You can redirect to a details page with the product ID in the query string
     window.location.href = `details.html?id=${id}`;
 }
 
@@ -91,6 +90,10 @@ searchButton.addEventListener("click", async ()=> {
     const response = await fetch(`https://dummyjson.com/products/search?q=${input.value}`);
     const data = await response.json();
     const { products } = data;
+    if(products.length<1){
+        cardContainer.innerHTML="<div class='not-found'>❌ No Products found!</div>"
+    }
+
     createProductCard(products);
     input.value= ""
     buttonContainer.innerHTML = ''
