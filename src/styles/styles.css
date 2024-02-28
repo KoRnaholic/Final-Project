@@ -10,15 +10,44 @@ body {
 header{
     padding: 30px;
 }
+
+
 .nav-container{
     display: flex;
     justify-content: space-around ;
     align-items: center;
 }
+
 .nav-box{
     display: flex;
     gap: 10px;
 }
+
+.nav-box ul{
+  display: flex;
+}
+.btn-close-nav{
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: none;
+}
+
+.btn-open-nav{
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: none;
+  
+}
+
+/* .menu{
+  display: none;
+}
+
+.close-menu{
+  display: none;
+} */
 
 li{
     list-style: none;
@@ -318,3 +347,119 @@ li a{
   margin-top: 50px;
   font-size: 26px;
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px 15px;
+  font-size: 16px;
+  border: 2px solid #3498db;
+  background-color: #f8f9fa;
+  color: #3498db;
+  border-radius: 5px;
+}
+
+/* Hover state */
+select:hover {
+  border-color: #2980b9;
+}
+
+/* Focus state */
+select:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Arrow icon */
+select::after {
+  content: '\25BC'; /* Downward arrow */
+  position: absolute;
+  top: calc(50% - 5px);
+  right: 10px;
+  font-size: 14px;
+  color: #3498db;
+  pointer-events: none;
+}
+
+/* Styling for the options */
+option {
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* Hover state for the options */
+option:hover {
+  background-color: #ecf0f1;
+}
+
+/* Selected option */
+option:checked {
+  background-color: #3498db;
+  color: white;
+}
+
+
+
+/* media-querys */
+@media (max-width:1200px){
+  .sort-box{
+    gap: 150px;
+  }
+}
+
+@media (max-width:1000px){
+  .sort-box{
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* .menu{
+    display: block;
+  }
+.close-menu{
+  display: block;
+} */
+  .nav-box{
+    display: none;
+  }
+  .btn-open-nav{
+    display: block;
+  }
+  .navbar-open{
+    position: absolute;
+    background-color: rgb(26,30,31);
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100vh;
+    align-items: center;
+    justify-content: start;
+    z-index: 1;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 40px;
+    /* transform: translateX(100%); */
+    gap: 40px;
+    
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    
+  }
+  .btn-close-nav{
+    display: block;
+  }
+
+  .nav-box ul{
+    flex-direction: column;
+    color: rgb(244,244,244);
+  }
+
+  li a{
+    font-size: 20px;
+    color: white;
+  }
+}
+
+

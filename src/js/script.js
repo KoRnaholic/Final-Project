@@ -17,8 +17,10 @@ const createProductCard = (product) => {
     const cardEl = document.createElement("div");
     cardEl.classList.add("row");
 
+    const topRated = product.sort((a, b)=> b.rating - a.rating)
+
     cardEl.innerHTML = `
-        ${product.map((product) => {
+        ${topRated.map((product) => {
             const { title, thumbnail, description, price, id,rating, discountPercentage
             } = product;
             return `<div class="card">
@@ -85,6 +87,9 @@ category.addEventListener("change", async(e)=> {
 searchButton = document.querySelector(".search-button");
 searchButton.addEventListener("click", async ()=> {
     let input = document.querySelector(".search-input")
+    if(input.value === ""){
+       return
+    }
     cardContainer.innerHTML = ''
     
     const response = await fetch(`https://dummyjson.com/products/search?q=${input.value}`);
@@ -99,3 +104,27 @@ searchButton.addEventListener("click", async ()=> {
     buttonContainer.innerHTML = ''
 })
 
+const nav = document.querySelector(".nav-box")
+const btnOpen= document.querySelector(".btn-open-nav");
+btnOpen.addEventListener("click", ()=> {
+    nav.style.display="block"
+})
+
+const btnCloseEl = document.querySelector('.btn-close-nav')
+btnCloseEl.addEventListener('click', function () {
+    nav.style.display="none"
+})
+
+function handleDisplayBasedOnWidth() {
+    if (window.innerWidth >= 1000) {
+        nav.style.display = "block";
+    } else {
+        nav.style.display = "none";
+    }
+}
+
+// Initial call to set display based on window width
+handleDisplayBasedOnWidth();
+
+// Listen for window resize events
+window.addEventListener("resize", handleDisplayBasedOnWidth);
