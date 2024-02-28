@@ -14,8 +14,9 @@ header{
 
 .nav-container{
     display: flex;
-    justify-content: space-around ;
+    justify-content: space-between;
     align-items: center;
+    padding: 0px 100px;
 }
 
 .nav-box{
@@ -41,13 +42,6 @@ header{
   
 }
 
-/* .menu{
-  display: none;
-}
-
-.close-menu{
-  display: none;
-} */
 
 li{
     list-style: none;
@@ -61,7 +55,14 @@ li a{
     font-size: 18px;
     color: #555;
 }
-/* mainc  */
+
+li a:hover{
+  text-decoration: underline;
+  text-decoration-color:rgba(0, 128, 255, 0.7);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 5px;
+}
+/* main  */
 
 .main-container{
     max-width: 1200px;
@@ -399,6 +400,65 @@ option:checked {
   background-color: #3498db;
   color: white;
 }
+.custom-partners-wrapper {
+  display: flex;
+  justify-content: center; /* Center groups horizontally */
+  overflow: hidden;
+}
+
+.custom-partners-wrapper .custom-group {
+  display: flex;
+  text-align: center; 
+  gap: 120px;
+  position: absolute;
+}
+
+.custom-partners-wrapper img {
+  width: 350px; /* Set the width to 200px */
+  height: 250px; /* Set the height to 200px */
+  object-fit: cover; /* Maintain aspect ratio and fill the container */
+  /* display: none; */
+  opacity: 0;
+  margin: 0 auto; 
+  transition: opacity 1s ease-in-out; 
+}
+
+
+
+
+.project-partners {
+  min-height: 280px;
+}
+
+.rights a {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rights a:hover {
+  color: #bbbbbbdb;
+  transition: all 0.3s ease;
+}
+
+/* project partners section */
+.project-partners {
+  height: 310px;
+  background-color: rgb(127, 199, 217);
+  color: rgb(231, 244, 244);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 50;
+  padding: 30px 80px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.partners-box {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
 
 
 
@@ -407,12 +467,34 @@ option:checked {
   .sort-box{
     gap: 150px;
   }
+
+  .custom-partners-wrapper img {
+    width: 250px; /* Set the width to 200px */
+    height: 250px;
+  }
 }
 
 @media (max-width:1000px){
   .sort-box{
     flex-direction: column;
     gap: 20px;
+  }
+
+  .nav-container{
+    padding: 0;
+  }
+  .custom-partners-wrapper img {
+    width: 300px; /* Set the width to 200px */
+    height: 150px;
+  }
+  .project-partners{
+    height: 530px;
+  }
+
+  .custom-partners-wrapper .custom-group {
+    display: flex;
+   flex-direction: column;
+   gap: 15px;
   }
 
   /* .menu{

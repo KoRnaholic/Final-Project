@@ -128,3 +128,95 @@ handleDisplayBasedOnWidth();
 
 // Listen for window resize events
 window.addEventListener("resize", handleDisplayBasedOnWidth);
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Start the loop
+    startImageLoop();
+
+    // Add event listeners to arrows
+    document.querySelector('.right-arrow').addEventListener('click', function () {
+        clearInterval(imageLoopInterval);
+        moveToNextGroup();
+        startImageLoop();
+    });
+
+    document.querySelector('.left-arrow').addEventListener('click', function () {
+        clearInterval(imageLoopInterval);
+        moveToPreviousGroup();
+        startImageLoop();
+    });
+
+    // Add event listeners to dots
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            clearInterval(imageLoopInterval);
+            hideAllGroups();
+            currentGroupIndex = index;
+            showGroup(groups[currentGroupIndex]);
+            updateDotColors();
+            startImageLoop();
+        });
+    });
+});
+
+var currentGroupIndex = 0;
+var groups;
+var dots;
+var imageLoopInterval;
+
+function moveToNextGroup() {
+    hideAllGroups();
+    currentGroupIndex = (currentGroupIndex + 1) % groups.length;
+    showGroup(groups[currentGroupIndex]);
+    updateDotColors();
+}
+
+function moveToPreviousGroup() {
+    hideAllGroups();
+    currentGroupIndex = (currentGroupIndex - 1 + groups.length) % groups.length;
+    showGroup(groups[currentGroupIndex]);
+    updateDotColors();
+}
+
+function startImageLoop() {
+    // Get all groups
+    groups = document.querySelectorAll(".custom-group");
+
+    // Get all dots
+    dots = document.querySelectorAll('.dot');
+
+    // Show the initial group
+    showGroup(groups[currentGroupIndex]);
+    updateDotColors();
+
+    // Repeat the loop after showing all groups
+    imageLoopInterval = setInterval(moveToNextGroup, 3000); // Automatically move to the next group every 3 seconds
+}
+
+function hideAllGroups() {
+    groups.forEach(function (group) {
+        hideGroup(group);
+    });
+}
+
+function hideGroup(group) {
+    var images = group.getElementsByTagName("img");
+    for (var i = 0; i < images.length; i++) {
+        images[i].style.opacity = "0";
+    }
+}
+
+function showGroup(group) {
+    var images = group.getElementsByTagName("img");
+    for (var i = 0; i < images.length; i++) {
+        images[i].style.opacity = "1";
+    }
+}
+
+function updateDotColors() {
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentGroupIndex);
+    });
+}
