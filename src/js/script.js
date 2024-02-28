@@ -45,7 +45,7 @@ const createProductCard = (product) => {
                                 <div class="btn">
                                     <a href="">Buy Now</a>
                                 </div>
-                                <a href="" class="cart">Add to Cart</a>
+                                <a href="" class="add-cart">Add to Cart</a>
                             </div>
                         </div>
                         
@@ -219,4 +219,16 @@ function updateDotColors() {
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentGroupIndex);
     });
+}
+
+
+const cart = document.getElementById('cart');
+
+function toggleCart() {
+    cart.classList.toggle('open');
+}
+
+function checkout() {
+    // Add your checkout logic here
+    alert('Checkout button clicked');
 }

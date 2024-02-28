@@ -26,17 +26,15 @@
                     <li>
                         <a>Products</a>
                     </li>
-               
-                    <li>
-                        <a>About</a>
-                    </li>
+
+                    
                 
                     <li>
                         <a>Contact</a>
                     </li>
                
-                    <li>
-                        <a>Cart</a>
+                    <li class="cart-logo">
+                        <img  onclick="toggleCart()" src="/src/icons/cart.svg" width="35px" height="35px" />
                     </li>
                 </ul>
             </div>
@@ -101,6 +99,20 @@
         <div class="button-container">
             <button class="next-button">Load More Product</button>
         </div>
+
+        <div class="cart" id="cart">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <span class="cart-close" onclick="toggleCart()">×</span>
+            </div>
+            <div class="cart-items">
+                <!-- Cart items will go here -->
+            </div>
+            <div class="cart-footer">
+                <button class="checkout-btn" onclick="checkout()">Checkout</button>
+            </div>
+        </div>
+        
     </main>
 
     <script src="/src/js/script.js"></script>
