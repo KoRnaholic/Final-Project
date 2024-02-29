@@ -33,11 +33,11 @@
                         <a>Contact</a>
                     </li>
                
-                    <li  onclick="toggleCart()"  class="cart-logo">
-                        <img  src="/src/icons/cart.svg" width="35px" height="35px" />
-                        <span class="cart-quantity">0</span>
-                    </li>
                 </ul>
+            </div>
+            <div onclick="toggleCart()"  class="cart-logo">
+                <img  src="/src/icons/cart.svg" width="35px" height="35px" />
+                <span class="cart-quantity">0</span>
             </div>
             <button class="btn-open-nav">
                 <img class="menu" src="/src/icons/menu.svg" />
@@ -116,8 +116,8 @@
                 <button class="checkout-btn" onclick="checkout()">Checkout</button>
             </div>
         </div>
-        
     </main>
+    <div id="toastContainer"></div>
 
     <script src="/src/js/script.js"></script>
 </body>

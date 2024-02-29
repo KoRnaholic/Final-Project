@@ -53,7 +53,7 @@ const createProductCard = (product) => {
                                 <div class="btn">
                                     <a href="#" onClick="goToCheckout(${id})">Buy Now</a>
                                 </div>
-                                <a href="#" onClick="event.preventDefault();addToCart('${title}','${id}','${thumbnail}','${price}')" class="add-cart">Add to Cart</a>
+                                <a href="#" onClick="event.preventDefault();addToCart('${title}','${id}','${thumbnail}','${price}');showToast()" class="add-cart">Add to Cart</a>
                             </div>
                         </div>
                         
@@ -69,7 +69,20 @@ const createProductCard = (product) => {
     
 };
 
+function showToast() {
+    const toastContainer = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.innerText = '✅ Successfully added to the Cart!';
+    toastContainer.appendChild(toast);
 
+    toast.style.display = 'block';
+
+
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
 
 
 function addToCart(title, id, thumbnail, price, ) {

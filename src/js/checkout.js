@@ -15,8 +15,8 @@ if(Array.isArray(parsedId)){
                         <img src="${thumbnail}" alt="Product 1">
                         <div class="product-info">
                             <h3>${title}</h3>
+                            </div>
                             <p>$${price}</p>
-                        </div>
                     </li>
                     `;
         productList.appendChild(cardEl);
@@ -46,8 +46,8 @@ if(Array.isArray(parsedId)){
             <img src="${thumbnail}" alt="Product 1">
             <div class="product-info">
                 <h3>${title}</h3>
+                </div>
                 <p>$${price}</p>
-            </div>
         </li>`;
         productList.appendChild(cardEl);
         document.querySelector(".total-price").innerHTML=`$ ${price}`
@@ -55,6 +55,20 @@ if(Array.isArray(parsedId)){
         };
 }
 
+function showToast() {
+    const toastContainer = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.innerText = '✅ Your order has been successfully placed!';
+    toastContainer.appendChild(toast);
+
+    toast.style.display = 'block';
 
 
-// Example API_URL
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+
+
