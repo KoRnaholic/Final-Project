@@ -1,9 +1,6 @@
 const cardContainer = document.querySelector(".main-container");
 const id = new URLSearchParams(window.location.search).get("id");
 
-
-
-// Example API_URL
 const API_URL = "https://dummyjson.com/products";
 
 const fetchProducts = async () => {
@@ -18,7 +15,7 @@ fetchProducts();
 const createProductCard = (product) => {
     const cardEl = document.createElement("div");
     cardEl.classList.add("row");
-    const { title, thumbnail, description, category, price, id, images, rating, discountPercentage, stock, brand } = product;
+    const { title,  description, category, price, images, rating, discountPercentage, stock, brand } = product;
     cardEl.innerHTML = `
     <div class = "card-wrapper">
     <div class = "card">
@@ -35,7 +32,7 @@ const createProductCard = (product) => {
        return `
        <div class = "img-item">
          <a href = "#" data-id = "${index+1}">
-           <img src = "${image}" alt = "shoe image">
+           <img src = "${image}" alt = "image">
          </a>
        </div>
        `
@@ -62,21 +59,12 @@ const createProductCard = (product) => {
         <h2>about this item: </h2>
         <p>${description}</p>
         <ul>
-          <li>Color: <span>Black</span></li>
-          <li>Available: <span>in stock (${stock})</span></li>
-          <li>Category: <span>${category}</span></li>
-          <li>Shipping Area: <span>All over the world</span></li>
-          <li>Shipping Fee: <span>Free</span></li>
+          <li>✅ Available: <span>in stock (${stock})</span></li>
+          <li>✅ Category: <span>${category}</span></li>
+          <li>✅ Shipping Area: <span>All over the world</span></li>
+          <li>✅ Shipping Fee: <span>Free</span></li>
         </ul>
       </div>
-
-      <div class = "purchase-info">
-        <input type = "number" min = "0" value = "1">
-        <button type = "button" class = "btn">
-          Add to Cart <i class = "fas fa-shopping-cart"></i>
-        </button>
-      </div>
-
     </div>
     </div>
   </div>`;

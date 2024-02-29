@@ -1,4 +1,3 @@
-
 const cardContainer = document.querySelector(".main-container");
  const category_api = "https://dummyjson.com/products/category/"
  const buttonContainer = document.querySelector(".button-container")
@@ -13,11 +12,7 @@ const fetchProducts = async (page) => {
 };
 fetchProducts(page);
 
-
 let cartProducts=[];
-
-
-
 
 const createProductCard = (product) => {
     const cardEl = document.createElement("div");
@@ -27,8 +22,6 @@ const createProductCard = (product) => {
 
     cardEl.innerHTML = `
     ${topRated.map((product) => {
-            // let productObject = {id:product.id, thumbnail:product.thumbnail, price:product.price}
-            // console.log(productObject)
             const { title, thumbnail, description, price, id,rating, discountPercentage
             } = product;
             return `<div class="card">
@@ -58,15 +51,10 @@ const createProductCard = (product) => {
                         </div>
                         
                         </div>`;
-        }).join("")
-
-
-    
+        }).join("") 
     }
     `;
-
-    cardContainer.appendChild(cardEl);
-    
+    cardContainer.appendChild(cardEl);  
 };
 
 function showToast() {
@@ -77,7 +65,6 @@ function showToast() {
     toastContainer.appendChild(toast);
 
     toast.style.display = 'block';
-
 
     setTimeout(() => {
         toast.remove();
@@ -114,7 +101,6 @@ function updateCartDisplay() {
                     <div class="cart-item-price">$${item.price}</div>
                 </div>
             </div>
-            
         `;
         totalPrice += parseInt(item.price);
     }
@@ -126,14 +112,6 @@ function updateCartDisplay() {
     console.log(totalHtml)
     totalHtml.innerHTML = `Total: $${totalPrice}`;
 }
-
-
-
-
-
-
-
-
 
 
 function showDetails(id) {
@@ -216,51 +194,32 @@ window.addEventListener("resize", handleDisplayBasedOnWidth);
 document.addEventListener("DOMContentLoaded", function () {
     // Start the loop
     startImageLoop();
-
-
-    // Add event listeners to dots
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            clearInterval(imageLoopInterval);
-            hideAllGroups();
-            currentGroupIndex = index;
-            showGroup(groups[currentGroupIndex]);
-            updateDotColors();
-            startImageLoop();
-        });
-    });
+ 
 });
 
-var currentGroupIndex = 0;
-var groups;
-var dots;
-var imageLoopInterval;
+let currentGroupIndex = 0;
+let groups;
+let imageLoopInterval;
 
 function moveToNextGroup() {
     hideAllGroups();
     currentGroupIndex = (currentGroupIndex + 1) % groups.length;
     showGroup(groups[currentGroupIndex]);
-    updateDotColors();
 }
 
 function moveToPreviousGroup() {
     hideAllGroups();
     currentGroupIndex = (currentGroupIndex - 1 + groups.length) % groups.length;
     showGroup(groups[currentGroupIndex]);
-    updateDotColors();
 }
 
 function startImageLoop() {
     // Get all groups
     groups = document.querySelectorAll(".custom-group");
 
-    // Get all dots
-    dots = document.querySelectorAll('.dot');
-
     // Show the initial group
     showGroup(groups[currentGroupIndex]);
-    updateDotColors();
+ 
 
     // Repeat the loop after showing all groups
     imageLoopInterval = setInterval(moveToNextGroup, 3000); // Automatically move to the next group every 3 seconds
@@ -273,25 +232,18 @@ function hideAllGroups() {
 }
 
 function hideGroup(group) {
-    var images = group.getElementsByTagName("img");
-    for (var i = 0; i < images.length; i++) {
+    let images = group.getElementsByTagName("img");
+    for (let i = 0; i < images.length; i++) {
         images[i].style.opacity = "0";
     }
 }
 
 function showGroup(group) {
-    var images = group.getElementsByTagName("img");
-    for (var i = 0; i < images.length; i++) {
+    let images = group.getElementsByTagName("img");
+    for (let i = 0; i < images.length; i++) {
         images[i].style.opacity = "1";
     }
 }
-
-function updateDotColors() {
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentGroupIndex);
-    });
-}
-
 
 const cart = document.getElementById('cart');
 
@@ -299,8 +251,9 @@ function toggleCart() {
     cart.classList.toggle('open');
 }
 
+// checkout logic
 function checkout() {
-    // Add your checkout logic here
+    
    let newproducts = JSON.stringify(cartProducts)
    if(cartProducts.length <1 ){
     return
