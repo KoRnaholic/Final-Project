@@ -13,6 +13,12 @@ const fetchProducts = async (page) => {
 };
 fetchProducts(page);
 
+
+let cartProducts=[];
+
+
+
+
 const createProductCard = (product) => {
     const cardEl = document.createElement("div");
     cardEl.classList.add("row");
@@ -20,7 +26,9 @@ const createProductCard = (product) => {
     const topRated = product.sort((a, b)=> b.rating - a.rating)
 
     cardEl.innerHTML = `
-        ${topRated.map((product) => {
+    ${topRated.map((product) => {
+            // let productObject = {id:product.id, thumbnail:product.thumbnail, price:product.price}
+            // console.log(productObject)
             const { title, thumbnail, description, price, id,rating, discountPercentage
             } = product;
             return `<div class="card">
@@ -45,16 +53,68 @@ const createProductCard = (product) => {
                                 <div class="btn">
                                     <a href="">Buy Now</a>
                                 </div>
-                                <a href="" class="add-cart">Add to Cart</a>
+                                <a href="#" onClick="event.preventDefault();addToCart('${title}','${id}','${thumbnail}','${price}')" class="add-cart">Add to Cart</a>
                             </div>
                         </div>
                         
                         </div>`;
-        }).join("")}
+        }).join("")
+
+
+    
+    }
     `;
 
     cardContainer.appendChild(cardEl);
+    
 };
+
+
+
+
+function addToCart(title, id, thumbnail, price, ) {
+    let item = { title, id, thumbnail, price };
+    cartProducts.push(item);
+    updateCartDisplay();
+}
+
+function removeFromCart(id) {
+    cartProducts = cartProducts.filter(item => item.id !== id);
+    updateCartDisplay();
+}
+
+function updateCartDisplay() {
+    let cartHtmlContent = "";
+    let totalPrice = 0;
+    for (const item of cartProducts) {
+        cartHtmlContent += `
+            <div class="cart-item">
+                <span class="remove-item" onclick="removeFromCart('${item.id}')">&times;</span>
+                <img src="${item.thumbnail}" alt="${item.title}">
+                <div class="cart-item-info">
+                    <div class="cart-item-title">${item.title}</div>
+                    <div class="cart-item-price">$${item.price}</div>
+                </div>
+            </div>
+            
+        `;
+        totalPrice += parseInt(item.price);
+    }
+
+    const cartHtml = document.querySelector(".cart-items");
+    cartHtml.innerHTML = cartHtmlContent;
+
+    const totalHtml = document.querySelector(".cart-total");
+    console.log(totalHtml)
+    totalHtml.innerHTML = `Total: $${totalPrice}`;
+}
+
+
+
+
+
+
+
 
 function showDetails(id) {
     window.location.href = `details.html?id=${id}`;
@@ -134,18 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Start the loop
     startImageLoop();
 
-    // Add event listeners to arrows
-    document.querySelector('.right-arrow').addEventListener('click', function () {
-        clearInterval(imageLoopInterval);
-        moveToNextGroup();
-        startImageLoop();
-    });
-
-    document.querySelector('.left-arrow').addEventListener('click', function () {
-        clearInterval(imageLoopInterval);
-        moveToPreviousGroup();
-        startImageLoop();
-    });
 
     // Add event listeners to dots
     const dots = document.querySelectorAll('.dot');
