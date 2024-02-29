@@ -14,10 +14,12 @@ header{
     display: flex;
     justify-content: space-between;
 }
-.nav-box{
+.nav-box ul{
     display: flex;
     gap: 10px;
 }
+
+
 
 li{
     list-style: none;
@@ -27,9 +29,9 @@ li a{
     text-decoration: none;
     cursor: pointer;
     padding: 5px 10px;
-    /* background-color: aqua; */
-    font-size: 18px;
-    color: #555;
+    font-size: 20px;
+    color: white;
+    font-weight: 900;
 }
 
 
