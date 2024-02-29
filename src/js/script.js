@@ -51,7 +51,7 @@ const createProductCard = (product) => {
                             <p>${description}</p>
                             <div class="btn-group">
                                 <div class="btn">
-                                    <a href="">Buy Now</a>
+                                    <a href="#" onClick="goToCheckout(${id})">Buy Now</a>
                                 </div>
                                 <a href="#" onClick="event.preventDefault();addToCart('${title}','${id}','${thumbnail}','${price}')" class="add-cart">Add to Cart</a>
                             </div>
@@ -76,11 +76,16 @@ function addToCart(title, id, thumbnail, price, ) {
     let item = { title, id, thumbnail, price };
     cartProducts.push(item);
     updateCartDisplay();
+
+cartQuantity = document.querySelector(".cart-quantity");
+cartQuantity.innerHTML= `${cartProducts.length}`
 }
 
 function removeFromCart(id) {
     cartProducts = cartProducts.filter(item => item.id !== id);
     updateCartDisplay();
+    cartQuantity = document.querySelector(".cart-quantity");
+    cartQuantity.innerHTML= `${cartProducts.length}`
 }
 
 function updateCartDisplay() {
@@ -116,8 +121,13 @@ function updateCartDisplay() {
 
 
 
+
+
 function showDetails(id) {
     window.location.href = `details.html?id=${id}`;
+}
+function goToCheckout(id) {
+    window.location.href = `checkout.html?id=${id}`;
 }
 
 
@@ -278,5 +288,10 @@ function toggleCart() {
 
 function checkout() {
     // Add your checkout logic here
-    alert('Checkout button clicked');
+   let newproducts = JSON.stringify(cartProducts)
+   if(cartProducts.length <1 ){
+    return
+   }
+    window.location.href = `checkout.html?id=${newproducts}`;
+    
 }

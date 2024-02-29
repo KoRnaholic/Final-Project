@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #DCF2F1, #57cef5);
+  }
+header{
+    padding: 30px;
+}
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+}
+.nav-box{
+    display: flex;
+    gap: 10px;
+}
+
+li{
+    list-style: none;
+}
+
+li a{
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    /* background-color: aqua; */
+    font-size: 18px;
+    color: #555;
+}
+
+/* checkout card */
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.checkout-summary {
+    padding: 20px;
+}
+
+.checkout-summary h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.product-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.product-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.product-info h3 {
+    margin: 0;
+    color: #333;
+}
+
+.product-info p {
+    margin: 0;
+    color: green;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
