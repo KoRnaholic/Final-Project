@@ -14,7 +14,6 @@ const fetchProducts = async () => {
       createProductCard(data);
   } catch (error) {
       console.error(error);
-      // Handle the error, e.g., display an error message to the user
   }
 };
 

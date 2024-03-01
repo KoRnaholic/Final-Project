@@ -1,7 +1,10 @@
 const cardContainer = document.querySelector(".main-container");
- const category_api = "https://dummyjson.com/products/category/"
- const buttonContainer = document.querySelector(".button-container")
+const category_api = "https://dummyjson.com/products/category/"
+
+const buttonContainer = document.querySelector(".button-container")
+
 const API_URL = "https://dummyjson.com/products?skip=1&limit=9";
+
 let page = 0;
 const fetchProducts = async (page) => {
     try {
@@ -33,32 +36,31 @@ const createProductCard = (product) => {
             const { title, thumbnail, description, price, id,rating, discountPercentage
             } = product;
             return `<div class="card">
-                        <img src="${thumbnail}" alt="" />
-                        <span class="flag-discount">${discountPercentage.toFixed()}% Off</span>
-                        <div class="card-body">
-                            <div class="info">
-                                <div class="card-title">
-                                    <h4>${title}</h4>
-                                    <h3 class="price">$${price}</h3>
-                                </div>
-                                <div class="view-btn">
-                                    <a href="#" onClick="showDetails(${id})">View Details</a>
-                                    <div class="Stars" style="--rating: ${rating};"></div>
-                                    <span>${rating.toFixed(1)}</span>
-                                    </div>
-                                </div>
+                    <img src="${thumbnail}" alt="" />
+                    <span class="flag-discount">${discountPercentage.toFixed()}% Off</span>
+                    <div class="card-body">
+                        <div class="info">
+                            <div class="card-title">
+                                 <h4>${title}</h4>
+                                <h3 class="price">$${price}</h3>
                             </div>
-                            <hr />
-                            <p>${description}</p>
-                            <div class="btn-group">
-                                <div class="btn">
-                                    <a href="#" onClick="goToCheckout(${id})">Buy Now</a>
+                            <div class="view-btn">
+                                <a href="#" onClick="showDetails(${id})">View Details</a>
+                                <div class="Stars" style="--rating: ${rating};"></div>
+                                <span>${rating.toFixed(1)}</span>
                                 </div>
-                                <a href="#" onClick="event.preventDefault();addToCart('${title}','${id}','${thumbnail}','${price}');showToast()" class="add-cart">Add to Cart</a>
                             </div>
                         </div>
-                        
-                        </div>`;
+                        <hr />
+                         <p>${description}</p>
+                        <div class="btn-group">
+                            <div class="btn">
+                                <a href="#" onClick="goToCheckout(${id})">Buy Now</a>
+                            </div>
+                            <a href="#" onClick="event.preventDefault();addToCart('${title}','${id}','${thumbnail}','${price}');showToast()" class="add-cart">Add to Cart</a>
+                        </div>
+                    </div>   
+                    </div>`;
         }).join("") 
     }
     `;
