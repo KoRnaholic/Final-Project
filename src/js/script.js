@@ -4,12 +4,20 @@ const cardContainer = document.querySelector(".main-container");
 const API_URL = "https://dummyjson.com/products?skip=1&limit=9";
 let page = 0;
 const fetchProducts = async (page) => {
-    const response = await fetch(`https://dummyjson.com/products?skip=${page}&limit=9`);
-    const data = await response.json();
-    const { products } = data;
-    console.log(products);
-    createProductCard(products);
+    try {
+        const response = await fetch(`https://dummyjson.com/products?skip=${page}&limit=9`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        const { products } = data;
+        console.log(products);
+        createProductCard(products);
+    } catch (error) {
+        console.error(error);
+    }
 };
+
 fetchProducts(page);
 
 let cartProducts=[];
@@ -146,24 +154,32 @@ category.addEventListener("change", async(e)=> {
 
 
 searchButton = document.querySelector(".search-button");
-searchButton.addEventListener("click", async ()=> {
+searchButton.addEventListener("click", async () => {
     let input = document.querySelector(".search-input")
-    if(input.value === ""){
-       return
+    if (input.value === "") {
+        return
     }
     cardContainer.innerHTML = ''
-    
-    const response = await fetch(`https://dummyjson.com/products/search?q=${input.value}`);
-    const data = await response.json();
-    const { products } = data;
-    if(products.length<1){
-        cardContainer.innerHTML="<div class='not-found'>❌ No Products found!</div>"
-    }
 
-    createProductCard(products);
-    input.value= ""
-    buttonContainer.innerHTML = ''
+    try {
+        const response = await fetch(`https://dummyjson.com/products/search?q=${input.value}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        const { products } = data;
+        if (products.length < 1) {
+            cardContainer.innerHTML = "<div class='not-found'>❌ No Products found!</div>"
+        }
+
+        createProductCard(products);
+        input.value = ""
+        buttonContainer.innerHTML = ''
+    } catch (error) {
+        console.error(error);
+    }
 })
+
 
 const nav = document.querySelector(".nav-box")
 const btnOpen= document.querySelector(".btn-open-nav");

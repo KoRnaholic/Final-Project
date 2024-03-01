@@ -4,12 +4,20 @@ const id = new URLSearchParams(window.location.search).get("id");
 const API_URL = "https://dummyjson.com/products";
 
 const fetchProducts = async () => {
-    const response = await fetch(`${API_URL}/${id}`);
-    const data = await response.json();
-    // const { products } = data;
-    console.log(data);
-    createProductCard(data);
+  try {
+      const response = await fetch(`${API_URL}/${id}`);
+      if (!response.ok) {
+          throw new Error('Failed to fetch product');
+      }
+      const data = await response.json();
+      console.log(data);
+      createProductCard(data);
+  } catch (error) {
+      console.error(error);
+      // Handle the error, e.g., display an error message to the user
+  }
 };
+
 fetchProducts();
 
 const createProductCard = (product) => {
